@@ -31,10 +31,6 @@ function App() {
         <Route path="/place-order" element={<PlaceOrder/>} />
         <Route path="/orders" element={<Order/>} />
         <Route path="*" element={<div>No page found</div>} />
-
-        {/* Add more routes as needed */}
-        {/* Example: <Route path="/about" element={<About />} /> */}
-        {/* Example: <Route path="/contact" element={<Contact />} /> */}
       </Routes>
       </div>
     </>
