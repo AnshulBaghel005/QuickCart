@@ -11,6 +11,7 @@ import Login from './pages/Login'
 import PlaceOrder from './pages/PlaceOrder'
 import Order from './pages/Order'
 import Navbar from './componets/Navbar/Navbar'
+import Footer from './componets/footer/footer'
 
 function App() {
   
@@ -32,6 +33,7 @@ function App() {
         <Route path="/orders" element={<Order/>} />
         <Route path="*" element={<div>No page found</div>} />
       </Routes>
+      <Footer/>
       </div>
     </>
   )
