@@ -12,6 +12,7 @@ import PlaceOrder from './pages/PlaceOrder'
 import Order from './pages/Order'
 import Navbar from './componets/Navbar/Navbar'
 import Footer from './componets/footer/footer'
+import SearchBar from './componets/SearchBar'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
     
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] '>
       <Navbar/>
+      <SearchBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/collection" element={<Collections />} />
