@@ -9,10 +9,12 @@ export const ShopContext=createContext();
     const [searchQuery, setSearchQuery] = useState('');
     const [showSearch,setShowSearch]=useState(false)
     const [cartItems, setcartItems] = useState([])
-    console.log(cartItems,'jii')
-    const addToCart=(itemId,size)=>{
+    
+    
+    const addToCart=async(itemId,size)=>{
         if(!size){
             toast.error("Please select the size")
+            return;
         }
         else{
             toast.success('Item added into cart')
@@ -23,8 +25,10 @@ export const ShopContext=createContext();
             //if size is already present so increase the size val
             if(cartData[itemId][size]){
                 cartData[itemId][size]+=1;
+                console.log('kooo')
             }
             else{
+                cartItems[itemId]={};
                 cartData[itemId][size]=1;
             }
         }//first create obj then add size
@@ -50,11 +54,23 @@ export const ShopContext=createContext();
         console.log(totalCount);
         return totalCount;
      }
+     useEffect(() => {
+      getCartCount();
+    }, [cartItems])
+
+     const updateQuantity=async(itemId,size,quantity)=>{
+        let cartData=structuredClone(cartItems);
+        console.log(cartData,'cartdata')
+        cartData[itemId][size]=quantity;
+        setcartItems(cartData);
+        getCartCount();
+     }
     
 
     const value={
         products,currency,delivery_fee,searchQuery,setSearchQuery,
-        showSearch,setShowSearch,addToCart,cartItems,getCartCount
+        showSearch,setShowSearch,addToCart,cartItems,getCartCount,
+        updateQuantity
     }
     return(
         <ShopContext.Provider value={value}>
