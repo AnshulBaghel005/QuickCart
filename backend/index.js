@@ -8,12 +8,18 @@ app.use(express.json());
 require('dotenv').config();
 const PORT=process.env.PORT||4000;
 //routes
-const routes=require('./Routes/allRoutes');
-app.use('/api/v1',routes);
+const userRoutes=require('./Routers/userRoutes')
+app.use('/api/v1',userRoutes);
 
+const productRoutes=require('./Routers/productRoutes');
+app.use('/api/v1',productRoutes)
 app.use('/',(req,res)=>{
     res.send('api working')
 })
+//cloudinary
+const cloudinary=require('./config/cloudinary');
+cloudinary.connectCloudinary();
+
 //db connection
 const dbConnect=require('./config/database');
 dbConnect();
