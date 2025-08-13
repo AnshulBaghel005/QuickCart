@@ -3,8 +3,7 @@ require('dotenv').config();
 
 exports.adminAuth = async (req, res, next) => {
     try {
-        const { token } = req.headers||req.body; // ✅ Get token from body
-        console.log(token)
+        const token = req.headers.authorization?.split(" ")[1]
         if (!token) {
             return res.status(401).json({
                 success: false,
@@ -13,7 +12,6 @@ exports.adminAuth = async (req, res, next) => {
         }
 
         const decoded = JWT.verify(token, process.env.SECRET_KEY);
-        console.log("Decoded Token:", decoded);
             if (decoded.email !== process.env.ADMIN_EMAIL) {
             return res.status(403).json({
                 success: false,

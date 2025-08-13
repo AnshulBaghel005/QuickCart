@@ -75,8 +75,8 @@ exports.getProducts=async(req,res)=>{
 
 exports.removeProduct=async(req,res)=>{
   try{
-    
-     await Product.findOneAndDelete(req.body.id);
+      console.log(req.params.id)
+     await Product.findByIdAndDelete(req.params.id);
      return res.status(200).json({
       success:true,
       message:"Product removed"

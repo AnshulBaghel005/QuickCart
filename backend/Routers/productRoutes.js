@@ -12,8 +12,8 @@ const image=[
     { name:'image4',maxCount:1},
 ]
 productRouter.post('/product/add',adminAuth,upload.fields(image),addProduct)
-productRouter.get('/product/showAllProducts',adminAuth,getProducts)
-productRouter.post('/product/removeProduct',removeProduct)
+productRouter.get('/product/getProducts',adminAuth,getProducts)
+productRouter.post('/product/remove/:id',removeProduct)
 productRouter.get('/product/single-product/:id',singleProduct)
 
 
