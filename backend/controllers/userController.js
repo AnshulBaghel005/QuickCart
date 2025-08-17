@@ -3,9 +3,11 @@ const validator = require("email-validator");
 const bcrypt=require('bcrypt');
 const JWT=require('jsonwebtoken');
 require('dotenv').config();
+
 const cookieParser = require('cookie-parser')
 exports.registerUser=async(req,res)=>{
     try{
+        //console.log(process.env.SECRET_KEY,"hiii")
         const {name,email,password}=req.body;
         if(!name||!email||!password){
              return res.status(400).json({
@@ -87,7 +89,7 @@ exports.loginUser=async(req,res)=>{
             id:userData._id,
         }
 
-        let token=await JWT.sign(payload,process.env.SECRET_KEY,{expiresIn:'2h'})
+        let token=await JWT.sign(payload,process.env.SECRET_KEY,{expiresIn:'300h'})
         userData.password=undefined
         const options={
             expires:new Date(Date.now()+3*24*60*60*1000),
@@ -112,7 +114,7 @@ exports.loginUser=async(req,res)=>{
 exports.adminLogin=async(req,res)=>{
     try{
         const {email,password}=req.body;
-        console.log(email,password)
+        console.log(process.env.ADMIN_EMAIL,process.env.ADMIN_PASSWORD,'hiiiiii')
         if(!email||!password){
             return res.status(400).json({
                 success:false,
@@ -121,7 +123,7 @@ exports.adminLogin=async(req,res)=>{
         }
         const payload = { email }; 
         if(email===process.env.ADMIN_EMAIL && password===process.env.ADMIN_PASSWORD){
-        let token=JWT.sign(payload,process.env.SECRET_KEY);
+        let token=await JWT.sign(payload,process.env.SECRET_KEY);
         return res.status(200).json({
             success:true,
             message:"admin login",

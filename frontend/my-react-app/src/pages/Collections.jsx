@@ -50,7 +50,7 @@ const Collections = () => {
   }
   useEffect(() => {
     applyFilters();
-  }, [category,SubCategory,searchQuery,showSearch]);
+  }, [category,SubCategory,searchQuery,showSearch,products]);
 
   const sortProducts=()=>{
     let productsCopy=products.slice();

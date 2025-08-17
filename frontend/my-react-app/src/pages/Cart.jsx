@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from '../componets/Title';
 import assets from '../assets/frontend_assets/assets';
-
+import CartTotal from '../componets/Cart/CartTotal';
 const Cart = () => {
   const {products,currency,cartItems,updateQuantity}=useContext(ShopContext);
   const [cartData, setcartData] = useState([])
   useEffect(()=>{
+    if(!products || products.length==0) return;
     let tempData=[];
     for(let items in cartItems){
       for(let item in cartItems[items]){
@@ -21,7 +22,7 @@ const Cart = () => {
     }
     setcartData(tempData);
    
-  },[cartItems])
+  },[cartItems,products])
   
 
   return (
@@ -64,7 +65,12 @@ const Cart = () => {
           )
         })}
       </div>
+      <div className='flex justify-end my-20'>
+        <div className='w-full sm:w-[450px]'>
+          <CartTotal/>
+        </div>
       
+    </div>
     </div>
   )
 }

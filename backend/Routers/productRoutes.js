@@ -4,6 +4,7 @@ const {addProduct,getProducts,removeProduct,singleProduct}=require('../controlle
 const upload = require('../config/multer');
 const {adminAuth}=require('../middleware/adminAuth')
 
+
 //here multer use
 const image=[ 
     { name:'image1',maxCount:1},
@@ -11,10 +12,11 @@ const image=[
     { name:'image3',maxCount:1},
     { name:'image4',maxCount:1},
 ]
-productRouter.post('/product/add',adminAuth,upload.fields(image),addProduct)
-productRouter.get('/product/getProducts',adminAuth,getProducts)
-productRouter.post('/product/remove/:id',removeProduct)
-productRouter.get('/product/single-product/:id',singleProduct)
+const {authUser}=require('../middleware/auth')
+productRouter.post('/add',adminAuth,upload.fields(image),addProduct)
+productRouter.get('/getProducts',getProducts)
+productRouter.post('/remove/:id',removeProduct)
+productRouter.get('/single-product/:id',singleProduct)
 
 
 module.exports=productRouter;

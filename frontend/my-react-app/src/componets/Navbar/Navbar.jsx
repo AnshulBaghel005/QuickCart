@@ -3,9 +3,10 @@ import assets from "../../assets/frontend_assets/assets.js";
 import { NavLink } from 'react-router'
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../context/ShopContext.jsx';
+import { toast } from 'react-toastify';
 const Navbar = () => {
   const [visible, setvisible] = useState(false)
-  const {setShowSearch, getCartCount} = useContext(ShopContext)
+  const {setShowSearch, getCartCount,navigate,token,setToken,setcartItems} = useContext(ShopContext)
   return (
     <div className='flex justify-between items-center py-5 font-medium'>
         <Link to='/'>
@@ -31,15 +32,32 @@ const Navbar = () => {
         <div className='flex items-center gap-6'>
             <img onClick={()=>setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer'alt="" />
             <div className='group relative'>
-              <img className='w-5 cursor-pointer'src={assets.profile_icon} alt="" />
+              <img onClick={()=>token ?null :navigate('/login')} className='w-5 cursor-pointer'src={assets.profile_icon} alt="" />
+              {/* dropdown menu */}
+              { token &&
               <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 text-gray-700'>
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 rounded-md  cursor-pointer'>
                     <p className='hover:text-black transition ease-in'>My Profile</p>
-                    <p className='hover:text-black transition ease-in'>Orders</p>
-                    <p className='hover:text-black transition ease-in'>Logout</p>
+                    <p onClick={()=>{
+                      navigate('/order')
+                    }} className='hover:text-black transition ease-in'>Orders</p>
+                    <p className='hover:text-black transition ease-in'>
+                      {
+                        token && <span onClick={()=>{
+                          setToken('')
+                          localStorage.removeItem('token')
+                          setcartItems({})
+                          toast.success('Logout Successfully')
+                           navigate('/login')
+                        }}>Logout</span>
+                      }
+                      {!token && <NavLink to={'/login'}
+                                 >Login</NavLink>
+                      }
+                    </p>
                 </div>
-                
               </div>
+         }
             </div>
             <NavLink to='/cart' className='relative'>
                <img 

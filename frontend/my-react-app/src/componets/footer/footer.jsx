@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaPhoneAlt, FaEnvelope } from 'reac
 import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
-    <footer className="w-full bg-white text-gray-800 px-8 py-10 mt-10 shadow-inner">
+    <footer className="  w-full bg-white text-gray-800 px-8 py-10 mt-10 shadow-inner">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         
         {/* Section 1: Company and Product Details */}
