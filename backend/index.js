@@ -20,7 +20,10 @@ app.use('/',(req,res)=>{
 const cloudinary=require('./config/cloudinary');
 cloudinary.connectCloudinary();
 
+<<<<<<< HEAD
 //db connection
+=======
+>>>>>>> e57e1f7 (db connection)
 const dbConnect=require('./config/database');
 dbConnect();
 
