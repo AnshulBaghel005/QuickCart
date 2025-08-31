@@ -2,12 +2,19 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from '../componets/Title';
 import assets from '../assets/frontend_assets/assets';
+<<<<<<< HEAD
 import CartTotal from '../componets/Cart/CartTotal';
+=======
+
+>>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
 const Cart = () => {
   const {products,currency,cartItems,updateQuantity}=useContext(ShopContext);
   const [cartData, setcartData] = useState([])
   useEffect(()=>{
+<<<<<<< HEAD
     if(!products || products.length==0) return;
+=======
+>>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
     let tempData=[];
     for(let items in cartItems){
       for(let item in cartItems[items]){
@@ -22,7 +29,11 @@ const Cart = () => {
     }
     setcartData(tempData);
    
+<<<<<<< HEAD
   },[cartItems,products])
+=======
+  },[cartItems])
+>>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
   
 
   return (
@@ -65,6 +76,7 @@ const Cart = () => {
           )
         })}
       </div>
+<<<<<<< HEAD
       <div className='flex justify-end my-20'>
         <div className='w-full sm:w-[450px]'>
           <CartTotal/>
@@ -72,6 +84,10 @@ const Cart = () => {
       
     </div>
     </div>
+=======
+      
+    </div>
+>>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
   )
 }
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
 import { ShopContext } from "../context/ShopContext";
@@ -152,3 +153,14 @@ const Login = () => {
 };
 
 export default Login;
+=======
+import React from 'react'
+
+const Login = () => {
+  return (
+    <div>Login</div>
+  )
+}
+
+export default Login
+>>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c

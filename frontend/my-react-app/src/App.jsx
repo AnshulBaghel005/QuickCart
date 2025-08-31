@@ -32,11 +32,18 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/place-order" element={<PlaceOrder/>} />
+<<<<<<< HEAD
         <Route path="/order" element={<Order/>} />
         <Route path="*" element={<div>No page found</div>} />
       </Routes>
        <Footer/>
      
+=======
+        <Route path="/orders" element={<Order/>} />
+        <Route path="*" element={<div>No page found</div>} />
+      </Routes>
+      <Footer/>
+>>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
       </div>
     </>
   )

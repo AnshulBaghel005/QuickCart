@@ -8,7 +8,11 @@ const LatestCollections = () => {
     const [items, setItems] = useState([])
     useEffect(() => {
       setItems(products.slice(0,10));
+<<<<<<< HEAD
     },[products])
+=======
+    },[])
+>>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
     
     
   return (

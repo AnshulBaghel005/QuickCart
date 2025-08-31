@@ -3,10 +3,16 @@ import assets from "../../assets/frontend_assets/assets.js";
 import { NavLink } from 'react-router'
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../context/ShopContext.jsx';
+<<<<<<< HEAD
 import { toast } from 'react-toastify';
 const Navbar = () => {
   const [visible, setvisible] = useState(false)
   const {setShowSearch, getCartCount,navigate,token,setToken,setcartItems} = useContext(ShopContext)
+=======
+const Navbar = () => {
+  const [visible, setvisible] = useState(false)
+  const {setShowSearch, getCartCount} = useContext(ShopContext)
+>>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
   return (
     <div className='flex justify-between items-center py-5 font-medium'>
         <Link to='/'>
@@ -32,6 +38,7 @@ const Navbar = () => {
         <div className='flex items-center gap-6'>
             <img onClick={()=>setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer'alt="" />
             <div className='group relative'>
+<<<<<<< HEAD
               <img onClick={()=>token ?null :navigate('/login')} className='w-5 cursor-pointer'src={assets.profile_icon} alt="" />
               {/* dropdown menu */}
               { token &&
@@ -58,6 +65,17 @@ const Navbar = () => {
                 </div>
               </div>
          }
+=======
+              <img className='w-5 cursor-pointer'src={assets.profile_icon} alt="" />
+              <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 text-gray-700'>
+                <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 rounded-md  cursor-pointer'>
+                    <p className='hover:text-black transition ease-in'>My Profile</p>
+                    <p className='hover:text-black transition ease-in'>Orders</p>
+                    <p className='hover:text-black transition ease-in'>Logout</p>
+                </div>
+                
+              </div>
+>>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
             </div>
             <NavLink to='/cart' className='relative'>
                <img 
