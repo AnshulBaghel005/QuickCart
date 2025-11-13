@@ -1,5 +1,5 @@
 const express = require("express");
-const { placeOrder,placeOrderStripe,placeOrderRazorpay, getUserOrders, getAllOrders, updateOrderStatus } = require("../controllers/orderController");
+const { placeOrder,placeOrderStripe,placeOrderRazorpay, getAllOrders, updateOrderStatus, userorders } = require("../controllers/orderController");
 const orderRouter = express.Router();
 
 const {adminAuth}=require('../middleware/adminAuth')
@@ -13,6 +13,6 @@ orderRouter.post('/place',authUser,placeOrder)
 orderRouter.post('/place-stripe',authUser,placeOrderStripe)
 orderRouter.post('/place-razorpay',authUser,placeOrderRazorpay)
 //USER Features
-orderRouter.get('/user-orders',authUser,getUserOrders)
+orderRouter.post('/userorders',authUser,userorders)
 
 module.exports=orderRouter

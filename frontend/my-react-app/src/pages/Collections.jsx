@@ -13,18 +13,20 @@ const Collections = () => {
   const [SubCategory,setSubCategory]=useState([]);
   const [sortType, setSortType] = useState('relevent');
   const toggleCategory = (e) => {
-    if(category.includes(e.target.value)){
-      setCategory(category.filter(item => item !== e.target.value));
+    let a= (e.target.value).toLowerCase();
+    if(category.includes((a).toLowerCase())){
+      setCategory(category.filter(item => item != a));
     } else {
-      setCategory([...category, e.target.value]);
+      setCategory([...category, a]);
     }
 
   }
   const toggleSubCatergory = (e) => {
-    if(SubCategory.includes(e.target.value)){
-      setSubCategory(SubCategory.filter(item => item !== e.target.value));
+    let a= (e.target.value).toLowerCase();
+    if(SubCategory.includes(a)){
+      setSubCategory(SubCategory.filter(item => item !== a));
     } else {
-      setSubCategory([...SubCategory, e.target.value]);
+      setSubCategory([...SubCategory, a]);
     }
 
   }
@@ -50,11 +52,7 @@ const Collections = () => {
   }
   useEffect(() => {
     applyFilters();
-<<<<<<< HEAD
-  }, [category,SubCategory,searchQuery,showSearch,products]);
-=======
   }, [category,SubCategory,searchQuery,showSearch]);
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
 
   const sortProducts=()=>{
     let productsCopy=products.slice();
@@ -89,7 +87,7 @@ const Collections = () => {
               <input className='w-3' type="checkbox" value={'Women'} onClick={toggleCategory} /> Women
              </p>
               <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Kids'}  onClick={toggleCategory}/> Kid
+              <input className='w-3' type="checkbox" value={'Kids'}  onClick={toggleCategory}/> Kids
              </p>
           </div>
         </div>

@@ -1,20 +1,12 @@
-<<<<<<< HEAD
 import { createContext, use, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import {useNavigate} from 'react-router-dom'
 export const ShopContext=createContext();
 import axios from 'axios'
-=======
-import { createContext, useEffect, useState } from "react";
-import {products} from '../assets/frontend_assets/assets.js';
-import { toast } from "react-toastify";
-export const ShopContext=createContext();
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
 
  const ShopContextProvider=({children})=>{
     const currency="₹";
     const delivery_fee=10;
-<<<<<<< HEAD
     const backend_url=import.meta.env.VITE_BACKEND_URL
     const [token,setToken]=useState('');
     const [searchQuery, setSearchQuery] = useState('');
@@ -47,34 +39,17 @@ export const ShopContext=createContext();
 
     },[])
 
-=======
-    const [searchQuery, setSearchQuery] = useState('');
-    const [showSearch,setShowSearch]=useState(false)
-    const [cartItems, setcartItems] = useState([])
-    
-    
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
     const addToCart=async(itemId,size)=>{
         if(!size){
             toast.error("Please select the size")
             return;
         }
-<<<<<<< HEAD
-=======
-        else{
-            toast.success('Item added into cart')
-        }
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
         //copy the cartItems
         let cartData=structuredClone(cartItems);
         if(cartData[itemId]){
             //if size is already present so increase the size val
             if(cartData[itemId][size]){
                 cartData[itemId][size]+=1;
-<<<<<<< HEAD
-=======
-                console.log('kooo')
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
             }
             else{
                 cartItems[itemId]={};
@@ -86,7 +61,6 @@ export const ShopContext=createContext();
             cartData[itemId][size]=1;
         }
         setcartItems(cartData)
-<<<<<<< HEAD
         if(token){
             try{
                 let res=await axios.post(backend_url+"/api/v1/cart/add",{itemId,size},{headers:{Authorization:`Bearer ${token}`}})
@@ -102,10 +76,6 @@ export const ShopContext=createContext();
     }
 }
 const getCartCount=()=>{
-=======
-    }
-     const getCartCount=()=>{
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
         let totalCount=0;
         for(let items in cartItems){
             for(let item in cartItems[items]){
@@ -118,7 +88,6 @@ const getCartCount=()=>{
                 }
             }
         }
-<<<<<<< HEAD
         //console.log(totalCount);
         return totalCount;
     }
@@ -134,11 +103,6 @@ const getCartCount=()=>{
     }
     return totalAmount;
  }   
-=======
-        console.log(totalCount);
-        return totalCount;
-     }
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
      useEffect(() => {
       getCartCount();
     }, [cartItems])
@@ -148,7 +112,6 @@ const getCartCount=()=>{
         console.log(cartData,'cartdata')
         cartData[itemId][size]=quantity;
         setcartItems(cartData);
-<<<<<<< HEAD
         if(token){
             try{
                 let res=await axios.post(backend_url+"/api/v1/cart/update",{itemId,size,quantity},{headers:{Authorization:`Bearer ${token}`}})
@@ -178,16 +141,6 @@ const getCartCount=()=>{
         products,currency,delivery_fee,searchQuery,setSearchQuery,
         showSearch,setShowSearch,addToCart,cartItems,setcartItems,getCartCount,
         updateQuantity,navigate,backend_url,token,setToken,getCartAmount
-=======
-        getCartCount();
-     }
-    
-
-    const value={
-        products,currency,delivery_fee,searchQuery,setSearchQuery,
-        showSearch,setShowSearch,addToCart,cartItems,getCartCount,
-        updateQuantity
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
     }
     return(
         <ShopContext.Provider value={value}>

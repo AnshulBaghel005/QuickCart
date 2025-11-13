@@ -3,17 +3,9 @@ const validator = require("email-validator");
 const bcrypt=require('bcrypt');
 const JWT=require('jsonwebtoken');
 require('dotenv').config();
-<<<<<<< HEAD
-
 const cookieParser = require('cookie-parser')
 exports.registerUser=async(req,res)=>{
     try{
-        //console.log(process.env.SECRET_KEY,"hiii")
-=======
-const cookieParser = require('cookie-parser')
-exports.registerUser=async(req,res)=>{
-    try{
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
         const {name,email,password}=req.body;
         if(!name||!email||!password){
              return res.status(400).json({
@@ -95,11 +87,7 @@ exports.loginUser=async(req,res)=>{
             id:userData._id,
         }
 
-<<<<<<< HEAD
-        let token=await JWT.sign(payload,process.env.SECRET_KEY,{expiresIn:'300h'})
-=======
-        let token=await JWT.sign(payload,process.env.SECRET_KEY,{expiresIn:'2h'})
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
+        let token=await JWT.sign(payload,process.env.SECRET_KEY,{expiresIn:'3h'})
         userData.password=undefined
         const options={
             expires:new Date(Date.now()+3*24*60*60*1000),
@@ -124,11 +112,8 @@ exports.loginUser=async(req,res)=>{
 exports.adminLogin=async(req,res)=>{
     try{
         const {email,password}=req.body;
-<<<<<<< HEAD
         console.log(process.env.ADMIN_EMAIL,process.env.ADMIN_PASSWORD,'hiiiiii')
-=======
         console.log(email,password)
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
         if(!email||!password){
             return res.status(400).json({
                 success:false,
@@ -137,11 +122,7 @@ exports.adminLogin=async(req,res)=>{
         }
         const payload = { email }; 
         if(email===process.env.ADMIN_EMAIL && password===process.env.ADMIN_PASSWORD){
-<<<<<<< HEAD
         let token=await JWT.sign(payload,process.env.SECRET_KEY);
-=======
-        let token=JWT.sign(payload,process.env.SECRET_KEY);
->>>>>>> e57e1f7a60ef4ad85852c94bdcb2ab7df71c630c
         return res.status(200).json({
             success:true,
             message:"admin login",
