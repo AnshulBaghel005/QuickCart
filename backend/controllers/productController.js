@@ -79,7 +79,7 @@ exports.addProduct=async(req,res)=>{
 
   }catch(err){
     logAddProductError(err,req,stage)
-    return res.status(400).json({
+    return res.status(500).json({
         success:false,
         message:'something went wrong in add prodcut'
     })
