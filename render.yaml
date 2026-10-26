@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: quickcart-frontend
+    runtime: static
+    rootDir: frontend/my-react-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: https://quickcart-eqai.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

@@ -7,7 +7,10 @@ import axios from 'axios'
  const ShopContextProvider=({children})=>{
     const currency="₹";
     const delivery_fee=10;
-    const backend_url=import.meta.env.VITE_BACKEND_URL
+    const backend_url=import.meta.env.VITE_BACKEND_URL?.trim().replace(/\/+$/, '')
+    if(!backend_url){
+        throw new Error('VITE_BACKEND_URL is required to use the QuickCart customer app')
+    }
     const [token,setToken]=useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [showSearch,setShowSearch]=useState(false)

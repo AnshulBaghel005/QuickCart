@@ -8,7 +8,10 @@ import AddProduct from './pages/AddProduct'
 import List from './pages/List'
 import Order from './pages/Order'
 
-export const backendUrl=import.meta.env.VITE_BACKEND_URL
+export const backendUrl=import.meta.env.VITE_BACKEND_URL?.trim().replace(/\/+$/, '')
+if(!backendUrl){
+  throw new Error('VITE_BACKEND_URL is required to use the QuickCart admin app')
+}
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token')?localStorage.getItem('token'):"")
   useEffect(()=>{
