@@ -3,7 +3,7 @@ const User = require('../models/userModel.js');
 exports.addToCart = async (req, res) => {
     try{
         const{userId,itemId,size}=req.body
-        console.log(itemId,size,'itemId,size')
+      //  console.log(itemId,size,'itemId,size')
         const userData=await User.findById(userId);
         if(!userData){  
             return res.status(404).json({
